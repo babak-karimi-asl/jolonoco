@@ -1,6 +1,7 @@
 <script>
     import fuzzysort from "fuzzysort";
     import { onMount } from "svelte";
+    // import AutoCss from './lib/AutoCss.svelte'
 
     let commandInputRef;
     let commandInput = "";
@@ -45,6 +46,21 @@
                 }             
             },
         },
+
+        ...['width','height','border','border-radius','background-color','color',
+         'display','align-items','justify-content',
+        ].map(property=>({
+            id:'id-style-'+property,
+            text:`set ${property} of #name to #value`,
+            handler({ document }, { name,value }) {
+                try{
+                    document.getElementById(name).style[property]=value
+                }catch(e){
+                    console.log('e',e)
+                }
+            },
+        }))
+
     ];
 
     let getVariableListener = (e)=>{}
@@ -142,6 +158,9 @@
         if (commandInputRef) commandInputRef.focus();
     });
 </script>
+
+<!-- <AutoCss/> -->
+
 
 <div class="command-section">
     {#if highlight.index >= 0}

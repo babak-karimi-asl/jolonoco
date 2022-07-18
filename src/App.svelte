@@ -48,7 +48,7 @@
         },
 
         ...['width','height','border','border-radius','background-color','color',
-         'display','align-items','justify-content',
+         'display','align-items','justify-content','margin','padding',
         ].map(property=>({
             id:'id-style-'+property,
             text:`set ${property} of #name to #value`,
@@ -68,7 +68,7 @@
     let getVarInput = ''
     let getVarInputRef;
     function getVariable(name){
-        getVarCommand = 'Please enter '+name+':'
+        getVarCommand = 'Please enter #'+name+':'
         getVarInput = ''
         setTimeout(()=>{
             if(getVarInputRef)  getVarInputRef.focus()
@@ -163,16 +163,12 @@
 
 
 <div class="command-section">
-    {#if highlight.index >= 0}
-        <div>{results[highlight.index].text}</div>
-    {:else}
-        <div>type a command...</div>
-    {/if}
     <input 
         bind:this={commandInputRef} 
         class="command-input" type="text" 
         bind:value={commandInput} 
         on:keyup={(e) => onKeyDown(e, commandInput)} 
+        placeholder="type a command..."
     />
 
     <div>
@@ -184,6 +180,7 @@
 
 {#if getVarCommand}
 <div class="get-var">
+<div style="opacity:0.5;">{results[highlight.index].text}</div>
 <div>{getVarCommand}</div>
 <input bind:this={getVarInputRef} type="text" bind:value={getVarInput} on:keydown={getVariableListener}>
 </div>
@@ -215,6 +212,7 @@
         left:50%;
         border: 1px solid grey;
         background-color: bisque;
+        transform:translate(-50%,-50%);
 
     }
 </style>

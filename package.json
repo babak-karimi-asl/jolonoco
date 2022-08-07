@@ -14,6 +14,7 @@
     "vite": "^3.0.0"
   },
   "dependencies": {
-    "fuzzysort": "^2.0.1"
+    "fuzzysort": "^2.0.1",
+    "simple-svelte-autocomplete": "^2.4.0"
   }
 }

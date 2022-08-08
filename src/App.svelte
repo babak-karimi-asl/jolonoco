@@ -8,6 +8,9 @@
         {text:"foo"},
         {text:"bar"},
     ]
+
+    let selected = {}
 </script>
 
-<AutoComplete data={data} />
+{JSON.stringify(selected)}
+<AutoComplete data={data} bind:model={selected} />  

@@ -12,7 +12,7 @@ input
 output 
     [2,3,6]
 ***/
-export const sortedCommon = (arr1=[],arr2=[],compareFunction=(a,b)=>a===b)=>{
+export const sortedIntersection = (arr1=[],arr2=[],compareFunction=(a,b)=>a===b)=>{
     const Arr1 = (arr1?.length>arr2?.length?arr1:arr2) || []
     const Arr2 = (arr1?.length>arr2?.length?arr2:arr1) || []
     return Arr1.reduce((acc,cur)=>( 
@@ -27,7 +27,7 @@ export const sortedCommon = (arr1=[],arr2=[],compareFunction=(a,b)=>a===b)=>{
 export const matchFuzzy = (str='',search='')=>{
     const strArr = str?.toLowerCase?.()?.split?.('') || []
     const searchArr = search?.toLowerCase?.()?.split?.('') || []
-    return sortedCommon(strArr,searchArr).length>=searchArr.length
+    return sortedIntersection(strArr,searchArr).length>=searchArr.length
 }
 
 
